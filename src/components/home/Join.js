@@ -43,7 +43,7 @@ const Join = (props) => {
       setIsLoading(true);
       const url = baseURL + `meetings/get?meeting_title=${encodeURIComponent(meetingTitle)}`;
 const response = await axios.get(url);
-  console.log(JSON.stringify(response.data))
+
       if (response && response.data) {
         meeting = response.data;
         await joinCometChatGroup({ guid: meeting.meeting_uid });

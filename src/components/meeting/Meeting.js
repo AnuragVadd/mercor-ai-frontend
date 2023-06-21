@@ -41,7 +41,7 @@ const Meeting = () => {
           onMediaDeviceListUpdated: deviceList => {
           },
           onUserMuted: (userMuted, userMutedBy) => {
-            console.log("wteyquyeqwiuhl")
+
           },
           onScreenShareStarted: () => {
           },
