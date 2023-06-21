@@ -41,6 +41,7 @@ const Login = (props) => {
 
   const signin = async (email, password) => {
     const url = baseURL + 'login';
+    console.log("testing url = " + url)
     return await axios.post(url, { email, password });
   }
 
@@ -51,6 +52,7 @@ const Login = (props) => {
         setIsLoading(true);
         const authenticatedUser = await signin(email, password);
         const cometChatAccount = await loginCometChat({ id: authenticatedUser.data.id });
+        console.log("TETSING CQOMQD " + cometChatAccount)
         if (cometChatAccount) {
           localStorage.setItem('auth', JSON.stringify(authenticatedUser.data));
           setUser(authenticatedUser.data);

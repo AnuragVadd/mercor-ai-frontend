@@ -2,6 +2,7 @@ import { useContext, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Context from '../../context';
 import axios from 'axios'
+import baseURL from '../../baseUrl/baseUrl';
 function MeetingHeader() {
   const { meeting } = useContext(Context);
   const [recording, setRecording] = useState(false);
@@ -45,20 +46,18 @@ function MeetingHeader() {
   };
 
   const speakTranscript = text => {
-    if(transcript.toLocaleLowerCase().includes('sam')){
+
       const utterance = new SpeechSynthesisUtterance();
       utterance.text = text;
       
       speechSynthesisRef.current.speak(utterance);
-    }else {
-      console.log("oops")
-    }
+    
 
   };
 
   const sendTranscript = async () => {
       await axios
-      .post('http://localhost:3000/stop-recognition', { "data" : transcript })
+      .post(baseURL+ 'stop-recognition', { "data" : transcript })
       .then(response => {
         // console.log(response);
         speakTranscript(response.data)

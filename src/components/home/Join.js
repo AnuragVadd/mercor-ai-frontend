@@ -2,6 +2,7 @@ import { useRef, useContext } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import Context from '../../context';
+import baseURL from '../../baseUrl/baseUrl';
 
 const Join = (props) => {
   const { toggleJoin } = props;
@@ -40,7 +41,7 @@ const Join = (props) => {
     let meeting = null;
     try {
       setIsLoading(true);
-      const url = `http://localhost:3000/meetings/get?meeting_title=${encodeURIComponent(meetingTitle)}`;
+      const url = baseURL + `meetings/get?meeting_title=${encodeURIComponent(meetingTitle)}`;
 const response = await axios.get(url);
   console.log(JSON.stringify(response.data))
       if (response && response.data) {
