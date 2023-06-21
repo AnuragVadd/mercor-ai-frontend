@@ -18,12 +18,12 @@ const Home = () => {
   const history = useHistory();
   const loadMeetings = async () => {
     if (user) {
-      setIsLoading(true);
-      const url = baseURL + `meetings/id`;
+      // setIsLoading(true);
+      const url = baseURL + `meetings/id?created_by=${encodeURIComponent(user.id)}`;
       const response = await axios.get(url);
       const meetings = response.data;
       setMeetings(() => meetings);
-      setIsLoading(false);
+      // setIsLoading(false);
     }
   };
 
